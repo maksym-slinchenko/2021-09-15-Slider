@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Slider</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="swiper mySwiper">
+      <ul class="gallery swiper-wrapper">
+        <li class="gallery__item swiper-slide">
+          <picture class="gallery__image">
+            <source
+              srcset="./images/desktop/Nature-001.jpg"
+              type="image/jpeg"
+              media="(min-width: 769px)"
+            />
+            <source
+              srcset="./images/tablet/Nature-001.jpg"
+              type="image/jpeg"
+              media="(min-width: 481px)"
+            />
+            <source
+              srcset="./images/mobile/Nature-001.jpg"
+              type="image/jpeg"
+              media="(max-width: 480px)"
+            />
+            <img src="./images/desktop/Nature-001.jpg" alt="Nature" />
+          </picture>
+        </li>
+        <li class="gallery__item swiper-slide">
+          <video
+            class="gallery__video"
+            src="./video/mixkit-bubbling-water-in-slow-motion-182.mp4"
+            loop
+          ></video>
+        </li>
+        <li class="gallery__item swiper-slide">
+          <picture class="gallery__image">
+            <source
+              srcset="./images/desktop/Nature-002.jpg"
+              type="image/jpeg"
+              media="(min-width: 769px)"
+            />
+            <source
+              srcset="./images/tablet/Nature-002.jpg"
+              type="image/jpeg"
+              media="(min-width: 481px)"
+            />
+            <source
+              srcset="./images/mobile/Nature-002.jpg"
+              type="image/jpeg"
+              media="(max-width: 480px)"
+            />
+            <img src="./images/desktop/Nature-002.jpg" alt="Nature" />
+          </picture>
+        </li>
+        <li class="gallery__item swiper-slide">
+          <picture class="gallery__image">
+            <source
+              srcset="./images/desktop/Nature-003.jpg"
+              type="image/jpeg"
+              media="(min-width: 769px)"
+            />
+            <source
+              srcset="./images/tablet/Nature-003.jpg"
+              type="image/jpeg"
+              media="(min-width: 481px)"
+            />
+            <source
+              srcset="./images/mobile/Nature-003.jpg"
+              type="image/jpeg"
+              media="(max-width: 480px)"
+            />
+            <img src="./images/desktop/Nature-003.jpg" alt="Nature" />
+          </picture>
+        </li>
+        <li class="gallery__item swiper-slide">
+          <video
+            class="gallery__video"
+            src="./video/mixkit-people-pouring-a-warm-drink-around-a-campfire-513.mp4"
+            loop
+          ></video>
+        </li>
+        <li class="gallery__item swiper-slide">
+          <picture class="gallery__image">
+            <source
+              srcset="./images/desktop/Nature-004.jpg"
+              type="image/jpeg"
+              media="(min-width: 769px)"
+            />
+            <source
+              srcset="./images/tablet/Nature-004.jpg"
+              type="image/jpeg"
+              media="(min-width: 481px)"
+            />
+            <source
+              srcset="./images/mobile/Nature-004.jpg"
+              type="image/jpeg"
+              media="(max-width: 480px)"
+            />
+            <img src="./images/desktop/Nature-004.jpg" alt="Nature" />
+          </picture>
+        </li>
+      </ul>
+      <button class="swiper-button-next swiper-button"></button>
+      <button class="swiper-button-prev swiper-button"></button>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript">
+      var swiper = new Swiper('.mySwiper', {
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'fraction',
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        allowTouchMove: true,
+        breakpoints: {
+          768: {
+            allowTouchMove: false,
+          },
+        },
+        on: {
+          slideChangeTransitionEnd: function () {
+            const slideItem = document.querySelector('.swiper-slide-active');
+            const videoSlide = slideItem.querySelector('.gallery__video');
+            if (!videoSlide) {
+              return;
+            }
+            videoSlide.play();
+          },
+          slideChange: function () {
+            const slideItem = document.querySelector('.swiper-slide-active');
+            const videoSlide = slideItem.querySelector('.gallery__video');
+            if (!videoSlide) {
+              return;
+            }
+            videoSlide.pause();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
